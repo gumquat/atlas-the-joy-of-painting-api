@@ -1,44 +1,51 @@
+/// Class Diagram ///
 +---------------+
-|   TVSeries    |
+|   TVEpisode   |
 +---------------+
-| -seriesName   |
-| -description  |
-| -genre        |
+| -episodeId    |
+| -title        |
+| -airDate      |
 +---------------+
         |1        *|
-        |           |
-+---------------+   |
-|   TVEpisode   |   |
-+---------------+   |
-| -episodeId    |   |
-| -title        |   |
-| -description  |   |
-| -airDate      |   |
-| -duration     |   |
-| -colorsPalette|<>-+
-|                |   |
-+-------+-------+   |
         |           |
 +-------v---------+ |
 |   ColorPalette  | |
 +-------+---------+ |
 | -colorList      | |
 +------------------+ |
-        |1           |
+        |*           |
         |           |
 +-------v---------+ |
 |   SubjectMatter | |
 +-------+---------+ |
-| -topics         | |
+| -topicList      | |
 +------------------+ |
         |*           |
         |           |
 +---------------+   |
-|  FilterCriteria|<--+
+| FilterCriteria| <--+
 +---------------+
-| -genre        |
 | -airDateRange |
-| -seriesName   |
-| -colorsList   |
 | -topicList    |
+| -colorList    |
 +---------------+
+
+///Sequence Diagram///
++--------+   +----------+   +-------------+   +-------------+
+| Client |   | APIController |  | TVEpisodeService |  | Database    |
++--------+   +----------+   +-------------+   +-------------+
+    |             |                 |                 |
+    | getEpisodes(filterCriteria)   |                 |
+    |-------------------------------->|                 |
+    |             |       getEpisodes(filterCriteria)  |
+    |             |------------------>|                 |
+    |             |                  |  fetchEpisodes(filterCriteria)
+    |             |                  |------------------>|
+    |             |                  |                  | Execute query
+    |             |                  |                  | and retrieve
+    |             |                  |                  | episodes
+    |             |                  |<-----------------|
+    |             |                  |   Return episodes|
+    |             |<------------------|                 |
+    |   Return episodes              |                 |
+    |<--------------------------------|                 |

@@ -13,8 +13,8 @@ Build a databse out of provided data and an API that can access it.
 
 ## With this design, you can filter TV episodes based on:
 
-* Colors Used: By specifying a list of colors in the FilterCriteria class, you can filter episodes that have those colors in their ColorPalette.
-* Subject Matter: By specifying a list of topics in the FilterCriteria class, you can filter episodes that cover those topics in their SubjectMatter.
-* Episode Dates: By specifying an air date range in the FilterCriteria class, you can filter episodes that fall within that date range.
+* Colors Used: By specifying a list of colors in the 'colorList' attribute of the 'FilterCriteria' class, you can filter episodes that have those colors in their 'ColorPalette' class.
+* Subject Matter: By specifying a list of topics in the 'topicList' attribute of the 'FilterCriteria' class, you can filter episodes that cover those topics in their 'SubjectMatter' class.
+* Episode Dates: By specifying an air date range in the 'FilterCriteria' class, you can filter episodes that fall within that date range using the 'airDate' attribute of the 'TVEpisode' class.
 
 This design allows for flexible filtering based on the specified requirements and can be extended further if additional filtering criteria are needed in the future.
