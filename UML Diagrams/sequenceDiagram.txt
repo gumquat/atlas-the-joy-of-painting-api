@@ -1,0 +1,18 @@
++--------+   +----------+   +-------------+   +-------------+
+| Client |   | APIController |  | TVEpisodeService |  | Database    |
++--------+   +----------+   +-------------+   +-------------+
+    |             |                 |                 |
+    | getEpisodes(filterCriteria)   |                 |
+    |-------------------------------->|                 |
+    |             |       getEpisodes(filterCriteria)  |
+    |             |------------------>|                 |
+    |             |                  |  fetchEpisodes(filterCriteria)
+    |             |                  |------------------>|
+    |             |                  |                  | Execute query
+    |             |                  |                  | and retrieve
+    |             |                  |                  | episodes
+    |             |                  |<-----------------|
+    |             |                  |   Return episodes|
+    |             |<------------------|                 |
+    |   Return episodes              |                 |
+    |<--------------------------------|                 |

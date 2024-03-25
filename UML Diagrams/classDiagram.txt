@@ -1,0 +1,20 @@
++---------------+    +-------------+
+|   TVSeries    |    |  TVEpisode  |
++---------------+    +-------------+
+| -seriesName   |    | -episodeId  |
+| -description  |    | -title      |
+| -genre        |    | -description|
+|                |    | -airDate    |
+|                |    | -duration   |
++-------+-------+    | -series     |
+        |            +-------------+
+        |1        *|
+        |           |
++---------------+   |
+|  FilterCriteria|   |
++---------------+   |
+| -genre        |<--+
+| -airDateRange |
+| -seriesName   |
+|                |
++---------------+
