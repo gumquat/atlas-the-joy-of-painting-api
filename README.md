@@ -1,6 +1,6 @@
 # atlas-the-joy-of-painting-api
 
-## In the provided ASCII diagram:
+## In the provided UML Class Diagram:
 
 * The TVEpisode class has a one-to-many relationship with ColorPalette, which represents the colors used in the episode.
 * The TVEpisode class also has a many-to-many relationship with SubjectMatter, which represents the topics or subject matter covered in the episode.
