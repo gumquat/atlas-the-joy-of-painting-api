@@ -1,4 +1,9 @@
 # atlas-the-joy-of-painting-api
+Design a UML document that incorporates the ability to filter TV episodes based on Colors Used, Subject Matter, and Episode Dates.
+Create the SQL scripts required to create your database from scratch based on the design document
+* The SQL scripts must run locally when building your database
+* You may use any SQL database you choose
+Build a databse out of provided data and an API that can access it.
 
 ## In the provided UML Class Diagram:
 
