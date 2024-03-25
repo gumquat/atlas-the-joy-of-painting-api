@@ -1,0 +1,44 @@
++---------------+
+|   TVSeries    |
++---------------+
+| -seriesName   |
+| -description  |
+| -genre        |
++---------------+
+        |1        *|
+        |           |
++---------------+   |
+|   TVEpisode   |   |
++---------------+   |
+| -episodeId    |   |
+| -title        |   |
+| -description  |   |
+| -airDate      |   |
+| -duration     |   |
+| -colorsPalette|<>-+
+|                |   |
++-------+-------+   |
+        |           |
++-------v---------+ |
+|   ColorPalette  | |
++-------+---------+ |
+| -colorList      | |
++------------------+ |
+        |1           |
+        |           |
++-------v---------+ |
+|   SubjectMatter | |
++-------+---------+ |
+| -topics         | |
++------------------+ |
+        |*           |
+        |           |
++---------------+   |
+|  FilterCriteria|<--+
++---------------+
+| -genre        |
+| -airDateRange |
+| -seriesName   |
+| -colorsList   |
+| -topicList    |
++---------------+
