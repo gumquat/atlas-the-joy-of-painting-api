@@ -1,3 +1,4 @@
+# Python with SQLAlchemy
 # SQLAlchemy to read a JSON file and insert data into a PostgreSQL database
 import json
 from sqlalchemy import create_engine, Column, Integer, String

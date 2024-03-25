@@ -1,4 +1,5 @@
-/**Node.js and the mysql package to read a JSON file and insert data into a MySQL database */
+// Node.js with MySQL
+// Node.js and the mysql package to read a JSON file and insert data into a MySQL database
 const fs = require('fs');
 const mysql = require('mysql');
 
