@@ -1,4 +1,5 @@
 # atlas-the-joy-of-painting-api
+Using ETL (Extract, Transform, Load), which is the process of taking data from multiple unique sources, modifying them in some way, and then storing them in a centralized database, I am going to accomplish the following:
 Design a UML document that incorporates the ability to filter TV episodes based on Colors Used, Subject Matter, and Episode Dates.
 Create the SQL scripts required to create your database from scratch based on the design document
 * The SQL scripts must run locally when building your database
