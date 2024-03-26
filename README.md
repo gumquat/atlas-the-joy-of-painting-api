@@ -19,3 +19,6 @@ Build a databse out of provided data and an API that can access it.
 * Episode Dates: By specifying an air date range in the 'FilterCriteria' class, you can filter episodes that fall within that date range using the 'airDate' attribute of the 'TVEpisode' class.
 
 This design allows for flexible filtering based on the specified requirements and can be extended further if additional filtering criteria are needed in the future.
+
+# DEV NOTES
+the 0 or 1 values on colors are not neccessary
