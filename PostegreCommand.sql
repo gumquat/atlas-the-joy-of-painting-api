@@ -8,7 +8,7 @@ CREATE TABLE "episodes" (
 
 CREATE TABLE "episode_colors" (
   "paintingID" integer PRIMARY KEY,
-  "colorID" integer
+  "colorsID" integer
 );
 
 CREATE TABLE "episode_subjects" (
