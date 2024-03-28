@@ -16,14 +16,5 @@ df_output.to_csv('cleanData/colorsData.csv', index=False)
 # END --- CLEAN THE COLORSUSED FILE
 
 # START --- CLEAN THE SUBJECTMATTER FILE
-# Open the file 'Episode Dates' in read mode and read its contents
-with open('dirtyData/Episode Dates.txt', 'r') as file:
-    episode_dates_text = file.read()
-    # change stuff with other stuff
-    episode_dates_text_cleaned = episode_dates_text.replace('"', '')
-    episode_dates_text_cleaned = episode_dates_text.replace('(', ',')
-    episode_dates_text_cleaned = episode_dates_text.replace(')', '')
 
-with open('cleanData/cleanDates.txt', 'w') as file:
-    file.write(episode_dates_text)
 # END --- CLEAN THE SUBJECTMATTER FILE
