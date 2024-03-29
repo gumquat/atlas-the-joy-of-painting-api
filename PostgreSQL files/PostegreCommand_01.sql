@@ -1,36 +1,36 @@
 CREATE TABLE "episodes" (
-  "paintingID" integer PRIMARY KEY,
-  "title" varchar,
-  "date" varchar,
-  "season" integer,
-  "episode" integer
-);
-
-CREATE TABLE "episode_colors" (
-  "paintingID" integer PRIMARY KEY,
-  "colorsID" integer
-);
-
-CREATE TABLE "episode_subjects" (
-  "paintingID" integer PRIMARY KEY,
-  "subjectID" integer
+  "episodeID" INT PRIMARY KEY,
+  "title" char,
+  "season" INT,
+  "episode" INT,
+  "airDate" DATE
 );
 
 CREATE TABLE "colors" (
-  "colorsID" integer PRIMARY KEY,
-  "colorName" char,
-  "hex" varchar
+  "colorID" INT PRIMARY KEY,
+  "colorName" varchar,
+  "hexCode" varchar
 );
 
 CREATE TABLE "subjects" (
-  "subjectID" integer PRIMARY KEY,
-  "subjectName" char
+  "subjectID" INT PRIMARY KEY,
+  "subjectName" VARCHAR
 );
 
-ALTER TABLE "episode_subjects" ADD FOREIGN KEY ("subjectID") REFERENCES "episodes" ("paintingID");
+CREATE TABLE "episode_colors" (
+  "episodeID" int,
+  "colorID" INT
+);
 
-ALTER TABLE "episode_colors" ADD FOREIGN KEY ("paintingID") REFERENCES "episodes" ("paintingID");
+CREATE TABLE "episode_subject" (
+  "episodeID" INT,
+  "subjectID" INT
+);
 
-ALTER TABLE "episode_subjects" ADD FOREIGN KEY ("paintingID") REFERENCES "subjects" ("subjectID");
+ALTER TABLE "episode_colors" ADD FOREIGN KEY ("episodeID") REFERENCES "episodes" ("episodeID");
 
-ALTER TABLE "episode_colors" ADD FOREIGN KEY ("paintingID") REFERENCES "colors" ("colorsID");
+ALTER TABLE "episode_colors" ADD FOREIGN KEY ("colorID") REFERENCES "colors" ("colorID");
+
+ALTER TABLE "episode_subject" ADD FOREIGN KEY ("episodeID") REFERENCES "episodes" ("episodeID");
+
+ALTER TABLE "episode_subject" ADD FOREIGN KEY ("subjectID") REFERENCES "subjects" ("subjectID");
