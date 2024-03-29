@@ -8,4 +8,4 @@ episode_colors_df = pd.read_csv('cleanData/episode_colors.csv')
 episode_colors_df = episode_colors_df.drop(episode_colors_df.columns[1], axis=1)
 
 # Save the updated 'episode_colors_df' to a new CSV file
-episode_colors_df.to_csv('cleanData/episode_colors_updated.csv', index=False)
+episode_colors_df.to_csv('cleanData/updated_file.csv', index=False)
