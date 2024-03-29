@@ -1,4 +1,4 @@
-episode_id,painting_title,colors,color_hex
+episodeID,painting_title,colors,color_hex
 1,A Walk in the Woods,"['Alizarin Crimson', 'Bright Red', 'Cadmium Yellow', 'Phthalo Green\r\n', 'Prussian Blue', 'Sap Green', 'Titanium White', 'Van Dyke Brown']","['#4E1500', '#DB0000', '#FFEC00', '#102E3C', '#021E44', '#0A3410', '#FFFFFF', '#221B15']"
 2,Mt. McKinley,"['Alizarin Crimson', 'Bright Red', 'Cadmium Yellow', 'Phthalo Green\r\n', 'Prussian Blue', 'Sap Green', 'Titanium White', 'Van Dyke Brown']","['#4E1500', '#DB0000', '#FFEC00', '#102E3C', '#021E44', '#0A3410', '#FFFFFF', '#221B15']"
 3,Ebony Sunset,"['Alizarin Crimson', 'Black Gesso', 'Bright Red', 'Cadmium Yellow', 'Phthalo Green\r\n', 'Prussian Blue', 'Sap Green', 'Titanium White', 'Van Dyke Brown']","['#4E1500', '#000000', '#DB0000', '#FFEC00', '#102E3C', '#021E44', '#0A3410', '#FFFFFF', '#221B15']"
