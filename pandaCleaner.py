@@ -1,21 +1,11 @@
 # IGNORE THIS ERROR ITS FINE AND IMPORTING
 import pandas as pd
 
-# START --- CLEAN THE COLORSUSED FILE
-# Read the input CSV file into a DataFrame
-df = pd.read_csv('dirtyData/colorsUsed.csv')
+# Read the 'cleanData/episode_colors.csv' file
+episode_colors_df = pd.read_csv('cleanData/episode_colors.csv')
 
-# Copy columns 1, 4, 5, and 6
-df_output = df.iloc[:, [0, 3, 4, 5, 8, 9]].copy()
+# Drop column 2 from the DataFrame
+episode_colors_df = episode_colors_df.drop(episode_colors_df.columns[1], axis=1)
 
-# Rename column 1 to 'episode_id'
-df_output.rename(columns={df_output.columns[0]: 'episode_id'}, inplace=True)
-
-# Write the DataFrame to the output CSV file
-df_output.to_csv('cleanData/colorsData.csv', index=False)
-# END --- CLEAN THE COLORSUSED FILE
-
-## ## ##
-# START --- CLEAN THE SUBJECTMATTER FILE
-
-# END --- CLEAN THE SUBJECTMATTER FILE
+# Save the updated 'episode_colors_df' to a new CSV file
+episode_colors_df.to_csv('cleanData/episode_colors_updated.csv', index=False)
