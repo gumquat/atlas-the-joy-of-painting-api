@@ -24,8 +24,7 @@ with open('data.csv', 'r') as csvfile:
     # Prepare the SQL statement
     # note: run 'generate_insert_statement' and place the generated data HERE
     insert_query = """
-        INSERT INTO your_table (column1, column2, column3)
-        VALUES (%s, %s, %s)
+        PLACE YOUR INSERT TEXT HERE
     """
 
     # Iterate over the rows in the CSV file

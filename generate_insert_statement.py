@@ -8,10 +8,10 @@ import csv
 def generate_insert_statements(csv_file, table_name, columns):
     with open(csv_file, 'r') as file:
         csv_reader = csv.reader(file)
-        
+
         # Skip the header row
         header = next(csv_reader)
-        
+
         for row in csv_reader:
             values = [f"'{value}'" for value in row]
             values_str = ', '.join(values)
