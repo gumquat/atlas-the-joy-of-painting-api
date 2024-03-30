@@ -19,7 +19,7 @@ CREATE TABLE "subjects" (
 
 CREATE TABLE "episode_colors" (
   "episodeID" int,
-  "colorID" INT
+  "colorID" int
 );
 
 CREATE TABLE "episode_subject" (
