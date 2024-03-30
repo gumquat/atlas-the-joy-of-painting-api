@@ -14,6 +14,7 @@ conn = psycopg2.connect(
 cur = conn.cursor()
 
 ### BEGIN WRITING DATA TO SQLSERVER ### ### ###
+# change 'data'csv' with the path to your csv file
 # Open the CSV file
 with open('data.csv', 'r') as csvfile:
     csvreader = csv.reader(csvfile)
@@ -22,7 +23,8 @@ with open('data.csv', 'r') as csvfile:
     next(csvreader)
 
     # Prepare the SQL statement
-    # note: run 'generate_insert_statement' and place the generated data HERE
+    # note: run 'generate_insert_statement' on your csv file first,
+    # then place the generated SQL commands here
     insert_query = """
         PLACE YOUR INSERT TEXT HERE
     """
