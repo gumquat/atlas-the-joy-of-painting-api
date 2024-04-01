@@ -6,7 +6,7 @@ import psycopg2
 
     # CONNECT TO DATBASE
 conn = psycopg2.connect(
-    dbname="DATABASE_paintings",
+    dbname="thejoyofpainting",
     user="postgres",
     password="Password123", # IT SAYS THIS IS INCORRECT????? <---
     host="localhost",
