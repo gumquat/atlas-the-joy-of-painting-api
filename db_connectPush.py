@@ -16,11 +16,6 @@ conn = psycopg2.connect(
 cur = conn.cursor()
 
 # change 'data'csv' with the path to your csv file
-# cleanData/colors.csv
-# cleanData/episode_colors.csv
-# cleanData/episode_subjects.csv
-# cleanData/episodes.csv
-# cleanData/subjects.csv
 with open('cleanData/colors.csv', 'r') as csvfile:
     cur.copy_expert("COPY mytable FROM STDIN WITH CSV HEADER DELIMITER ','", csvfile)
 
@@ -29,3 +24,11 @@ conn.commit()
     # CLOSE IT ALL OUT
 cur.close()
 conn.close()
+
+### PICK UP FROM WHERE I LEFT OFF HERE
+#python3 db_connectPush.py
+# Traceback (most recent call last):
+#   File "/mnt/c/Users/Evan Newman/Documents/GitHub/atlas-the-joy-of-painting-api/db_connectPush.py", line 25, in <module>
+#     cur.copy_expert("COPY colors FROM STDIN WITH CSV HEADER DELIMITER ','", csvfile)
+# psycopg2.errors.UndefinedTable: relation "colors" does 
+# not exist
