@@ -1,5 +1,5 @@
-import csv
 # import pandas as pandas
+import csv
 import psycopg2
 
 #/var/lib/postgresql/14/main
@@ -8,7 +8,7 @@ import psycopg2
 conn = psycopg2.connect(
     dbname="thejoyofpainting",
     user="postgres",
-    password="Password123", # IT SAYS THIS IS INCORRECT????? <---
+    password="Password123",
     host="localhost",
     port="5432"
 )
@@ -21,7 +21,7 @@ cur = conn.cursor()
 # cleanData/episode_subjects.csv
 # cleanData/episodes.csv
 # cleanData/subjects.csv
-with open('C:/Users/Evan Newman/Documents/GitHub/atlas-the-joy-of-painting-api/cleanData/colors.csv', 'r') as csvfile:
+with open('cleanData/colors.csv', 'r') as csvfile:
     cur.copy_expert("COPY mytable FROM STDIN WITH CSV HEADER DELIMITER ','", csvfile)
 
     # COMMIT the transaction
