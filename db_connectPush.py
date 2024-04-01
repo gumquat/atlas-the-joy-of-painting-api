@@ -21,7 +21,7 @@ cur = conn.cursor()
 # cleanData/episode_subjects.csv
 # cleanData/episodes.csv
 # cleanData/subjects.csv
-with open('cleanData/colors.csv', 'r') as csvfile:
+with open('C:/Users/Evan Newman/Documents/GitHub/atlas-the-joy-of-painting-api/cleanData/colors.csv', 'r') as csvfile:
     cur.copy_expert("COPY mytable FROM STDIN WITH CSV HEADER DELIMITER ','", csvfile)
 
     # COMMIT the transaction
