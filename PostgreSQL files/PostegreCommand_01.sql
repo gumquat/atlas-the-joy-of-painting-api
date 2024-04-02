@@ -1,9 +1,10 @@
 CREATE TABLE "episodes" (
   "episodeID" INT PRIMARY KEY,
   "title" char,
+  "airMonth" char,
+  "airDate" varchar,
   "season" INT,
-  "episode" INT,
-  "airDate" DATE
+  "episode" INT
 );
 
 CREATE TABLE "colors" (
@@ -19,12 +20,12 @@ CREATE TABLE "subjects" (
 
 CREATE TABLE "episode_colors" (
   "episodeID" int,
-  "colorID" int
+  "colorID" int[]
 );
 
-CREATE TABLE "episode_subject" (
+CREATE TABLE "episode_subjects" (
   "episodeID" INT,
-  "subjectID" INT
+  "subjectID" INT[]
 );
 
 ALTER TABLE "episode_colors" ADD FOREIGN KEY ("episodeID") REFERENCES "episodes" ("episodeID");
