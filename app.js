@@ -46,7 +46,7 @@ app.get('/airMonth/:month', async (req, res) => {
     const getEpisodesByMonthQuery = `
       SELECT *
       FROM episodes
-      WHERE "airMonth" = $1
+      WHERE "airMonth" LIKE $1
     `;
     const client = await pool.connect();
     const result = await client.query(getEpisodesByMonthQuery, [month]);
