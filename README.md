@@ -20,5 +20,5 @@ Build a databse out of provided data and an API that can access it.
 
 This design allows for flexible filtering based on the specified requirements and can be extended further if additional filtering criteria are needed in the future.
 
-# DEV NOTES
-the 0 or 1 values on colors are not neccessary
+# UML 
+![alt text](<PostgreSQL files/UML_Diagram_01.png>)
