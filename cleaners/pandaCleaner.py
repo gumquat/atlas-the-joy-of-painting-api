@@ -2,7 +2,7 @@ import pandas as pd
 import ast
 
 # Read the input CSV file
-df = pd.read_csv('cleanData/episode_colors.csv')
+df = pd.read_csv('dirtyData/colorsUsed.csv')
 
 # Check if the column 'colorID' exists
 if 'colorID' in df.columns:

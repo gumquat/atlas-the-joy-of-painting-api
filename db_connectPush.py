@@ -22,7 +22,7 @@ cur = conn.cursor()
 #     SELECT EXISTS (
 #         SELECT 1
 #         FROM   information_schema.tables 
-#         WHERE  table_name = 'episodes'
+#         WHERE  table_name = 'episode_subjects'
 #     )
 # """
 # try:
@@ -31,13 +31,9 @@ cur = conn.cursor()
 #     if not table_exists:
 #         # Create the table
 #         create_table_query = """
-#             CREATE TABLE "episodes" (
-#                 "episodeID" INT PRIMARY KEY,
-#                 "title" char,
-#                 "airMonth" char,
-#                 "airDate" varchar,
-#                 "season" INT,
-#                 "episode" INT
+#             CREATE TABLE "episode_subjects" (
+#                 "episodeID" INT,
+#                 "subjectID" INT[]
 #             );
 #         """
 #         cur.execute(create_table_query)
@@ -51,21 +47,45 @@ cur = conn.cursor()
 
 #### THIS CODE PUSHES DATA FROM CSV FILE TO THE TABLES NAMED IN ITS ARGUMENTS ###
 ### change 'data'csv' with the path to your csv file
-with open('cleanData/subjects.csv', 'r') as csvfile:
-    cur.copy_expert("COPY subjects FROM STDIN WITH CSV HEADER DELIMITER ','", csvfile)
+# with open('cleanData/episode_subjects.csv', 'r') as csvfile:
+#     cur.copy_expert("COPY episode_subjects FROM STDIN WITH CSV HEADER DELIMITER ','", csvfile)
+### THIS CODE BELOW ACTUALLY WORKS!!!! DO NOT USE ABOVE CODE
+# Name of the table to insert data into
+table_name = "subjects"
+# Open the CSV file
+with open("cleanData/subjects.csv", "r") as csv_file:
+    # Create a CSV reader object
+    csv_reader = csv.reader(csv_file)
+
+    # Skip the header row if present
+    next(csv_reader)
+
+    # Iterate over each row in the CSV file
+    for row in csv_reader:
+        # Construct the SQL INSERT statement
+        columns = ", ".join(row)  # Assumes the first row contains column names
+        values = ", ".join(["%s"] * len(row))
+        insert_query = f"INSERT INTO {table_name} VALUES ({values})"
+
+        # Execute the INSERT statement
+        cur.execute(insert_query, row)
+
+# Commit the changes and close the connection
+conn.commit()
+
 
 ### CHECK THAT THE DATA WAS SUCCESSFULLY INSERTED HERE ### 
-cur.execute("SELECT * FROM subjects") # query to retrieve all data from a table
-rows = cur.fetchall() # Fetch all rows from the cursor
-with open("subjects_data.txt", "w") as file: # Write data to a text file
-    for row in rows:
-        file.write(str(row) + "\n")
-print("Data written successfully.")
+# cur.execute("SELECT * FROM episode_subjects") # query to retrieve all data from a table
+# rows = cur.fetchall() # Fetch all rows from the cursor
+# with open("episode_subjects_data.txt", "w") as file: # Write data to a text file
+#     for row in rows:
+#         file.write(str(row) + "\n")
+# print("Data written successfully.")
 
 
 ### TABLE MANAGEMENT
 # Execute a DROP TABLE query to delete the episode_colors table
-# cur.execute("DROP TABLE IF EXISTS episodes")
+# cur.execute("DROP TABLE IF EXISTS episode_subjects")
 
 # # Commit the transaction
 # conn.commit()

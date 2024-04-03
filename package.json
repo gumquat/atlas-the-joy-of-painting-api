@@ -1,0 +1,17 @@
+{
+  "name": "atlas-the-joy-of-painting-api",
+  "version": "1.0.0",
+  "description": "Using ETL (Extract, Transform, Load), which is the process of taking data from multiple unique sources, modifying them in some way, and then storing them in a centralized database, I am going to accomplish the following:\r Design a UML document that incorporates the ability to filter TV episodes based on Colors Used, Subject Matter, and Episode Dates.\r Create the SQL scripts required to create your database from scratch based on the design document\r * The SQL scripts must run locally when building your database\r * You may use any SQL database you choose\r Build a databse out of provided data and an API that can access it.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "pg": "^8.11.4"
+  }
+}
