@@ -56,27 +56,27 @@ cur = conn.cursor()
 
 #### THIS CODE PUSHES DATA FROM CSV FILE TO THE TABLES NAMED IN ITS ARGUMENTS ###
 # Name of the table to insert data into
-table_name = "subjects"
-# Open the CSV file
-with open("cleanData/subjects.csv", "r") as csv_file:
-    # Create a CSV reader object
-    csv_reader = csv.reader(csv_file)
+# table_name = "subjects"
+# # Open the CSV file
+# with open("cleanData/subjects.csv", "r") as csv_file:
+#     # Create a CSV reader object
+#     csv_reader = csv.reader(csv_file)
 
-    # Skip the header row if present
-    next(csv_reader)
+#     # Skip the header row if present
+#     next(csv_reader)
 
-    # Iterate over each row in the CSV file
-    for row in csv_reader:
-        # Construct the SQL INSERT statement
-        columns = ", ".join(row)  # Assumes the first row contains column names
-        values = ", ".join(["%s"] * len(row))
-        insert_query = f"INSERT INTO {table_name} VALUES ({values})"
+#     # Iterate over each row in the CSV file
+#     for row in csv_reader:
+#         # Construct the SQL INSERT statement
+#         columns = ", ".join(row)  # Assumes the first row contains column names
+#         values = ", ".join(["%s"] * len(row))
+#         insert_query = f"INSERT INTO {table_name} VALUES ({values})"
 
-        # Execute the INSERT statement
-        cur.execute(insert_query, row)
+#         # Execute the INSERT statement
+#         cur.execute(insert_query, row)
 
-# Commit the changes and close the connection
-conn.commit()
+# # Commit the changes and close the connection
+# conn.commit()
 
 
 ### CHECK THAT THE DATA WAS SUCCESSFULLY INSERTED HERE ### 
@@ -97,6 +97,13 @@ conn.commit()
 
 # print("Table deleted successfully.")
 
+try:
+    cur.execute("ALTER TABLE episode_colors ALTER COLUMN colorID TYPE text[] USING array_to_string(colorID, ',');")
+    conn.commit()
+    print("Column data type changed successfully!")
+except (Exception, psycopg2.DatabaseError) as error:
+    print(f"Error: {error}")
+    conn.rollback()
 
     # CLOSE IT ALL OUT
 cur.close()

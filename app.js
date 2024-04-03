@@ -33,43 +33,84 @@ async function getTableSchema() {
 }
 getTableSchema();
 
-const getAllEpisodesQuery = `
-  SELECT *
-  FROM episodes
-`;
-// // // Route to get all episodes // // //
 app.get('/episodes', async (req, res) => {
   try {
-    const client = await pool.connect();
-    const result = await client.query(getAllEpisodesQuery);
-    const episodes = result.rows;
-    res.json(episodes);
-    client.release();
-  } catch (err) {
-    console.error('Error executing query', err);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
-
-// // // Route to get episodes by month // // //
-app.get('/episodes/:month_name', async (req, res) => {
-  const month_name = req.params.month_name;
-  try {
-    // Execute a query to fetch data from the database
-    const query = {
-      text: `SELECT * FROM episodes WHERE episodes.airMonth = $1;`,
-      values: [month_name],
-    };
-    // Execute the query
-    const result = await pool.query(query);
-
-    // Send the response
-    res.json(result.rows);
+    const queryResult = await pool.query('SELECT * FROM episodes');
+    res.json(queryResult.rows);
   } catch (error) {
     console.error('Error executing query', error);
     res.status(500).json({ message: 'Internal Server Error' });
   }
 });
+
+// // // Route to COLORS // // // 
+app.get('/colors', async (req, res) => {
+  try {
+    const queryResult = await pool.query('SELECT * FROM colors')
+    
+    res.json(queryResult.rows);
+  } catch (error) {
+    console.error('Error executing query', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
+// // // Route to SUBJECTS // // //
+app.get('/subjects', async (req, res) => {
+  try {
+    const queryResult = await pool.query('SELECT * FROM subjects')
+
+    res.json(queryResult.rows);
+  } catch (error) {
+    console.error('Error executing query', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
+// // // Route to MONTHS // // //
+app.get('/episodes/airMonth/:month', async (req, res) => {
+  const month = req.params.month;
+
+  try {
+    const query = `
+      SELECT *
+      FROM episodes
+      WHERE air_month = $1;
+    `;
+    const values = [month];
+
+    const { rows } = await pool.query(query, values);
+
+    if (rows.length === 0) {
+      return res.status(404).json({ error: 'No episodes found for the specified month' });
+    }
+
+    res.json(rows);
+  } catch (err) {
+    console.error('Error executing query', err.stack);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// // // Route to get episodes by month // // //
+// app.get('/episodes/:month_name', async (req, res) => {
+//   const month_name = req.params.month_name;
+//   try {
+//     // Execute a query to fetch data from the database
+//     const query = {
+//       text: `SELECT * FROM episodes WHERE episodes.airMonth = $1;`,
+//       values: [month_name],
+//     };
+//     // Execute the query
+//     const result = await pool.query(query);
+
+//     // Send the response
+//     res.json(result.rows);
+//   } catch (error) {
+//     console.error('Error executing query', error);
+//     res.status(500).json({ message: 'Internal Server Error' });
+//   }
+// });
 
 // Start the server
 app.listen(port, () => {

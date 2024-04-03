@@ -19,7 +19,6 @@ cur = conn.cursor()
 
 # Name of the table to read data from
 table_name = "colors"
-
 # Execute the SELECT query
 cur.execute(f"SELECT * FROM {table_name}")
 
