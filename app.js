@@ -5,6 +5,10 @@ const cors = require('cors');
 // app.use(cors()); //this adds the cors middleware to all routes below
 const port = 3000;
 
+// Middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 // PostgreSQL connection pool
 const pool = new Pool({
   user: 'postgres',
@@ -39,24 +43,18 @@ app.get('/episodes', async (req, res) => {
 });
 
 // // // // // Route to get episodes by month // // // // //
+app.get('/episodes/:month', (req, res) => {
+  const month = req.params.month;
+  const query = `SELECT * FROM episodes WHERE airMonth LIKE '${month}%'`;
 
-app.get('/airMonth/:month', async (req, res) => {
-  try {
-    const { month } = req.params;
-    const getEpisodesByMonthQuery = `
-      SELECT *
-      FROM episodes
-      WHERE "airMonth" LIKE $1
-    `;
-    const client = await pool.connect();
-    const result = await client.query(getEpisodesByMonthQuery, [month]);
-    const episodes = result.rows;
-    res.json(episodes);
-    client.release();
-  } catch (err) {
-    console.error('Error executing query', err);
-    res.status(500).json({ error: 'Internal server error' });
-  }
+  db.all(query, (err, rows) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+
+    res.json({ episodes: rows });
+  });
 });
 
 // // // // // Start the server // // // // //
