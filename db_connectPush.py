@@ -16,6 +16,15 @@ conn = psycopg2.connect(
 # Create a cursor object to execute SQL queries
 cur = conn.cursor()
 
+# Rename the 'airMonth' column to 'air_month'
+# try:
+#     cur.execute("ALTER TABLE episodes RENAME COLUMN airMonth TO air_month;")
+#     conn.commit()
+#     print("Column renamed successfully!")
+# except (Exception, psycopg2.DatabaseError) as error:
+#     print(f"Error: {error}")
+#     conn.rollback()
+
 ### CREATE THE EMPTY TABLES HERE ###
 ### Check if the table exists
 # table_exists_query = """
@@ -46,10 +55,6 @@ cur = conn.cursor()
 #     print("Error:", e)
 
 #### THIS CODE PUSHES DATA FROM CSV FILE TO THE TABLES NAMED IN ITS ARGUMENTS ###
-### change 'data'csv' with the path to your csv file
-# with open('cleanData/episode_subjects.csv', 'r') as csvfile:
-#     cur.copy_expert("COPY episode_subjects FROM STDIN WITH CSV HEADER DELIMITER ','", csvfile)
-### THIS CODE BELOW ACTUALLY WORKS!!!! DO NOT USE ABOVE CODE
 # Name of the table to insert data into
 table_name = "subjects"
 # Open the CSV file
